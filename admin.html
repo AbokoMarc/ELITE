@@ -69,8 +69,8 @@
 (() => {
   "use strict";
   /* Mêmes valeurs que dans index.html (Supabase > Project Settings > API) */
-  const SUPABASE_URL      = "";
-  const SUPABASE_ANON_KEY = "";
+  const SUPABASE_URL      = "https://gjjmiuwqovhodjsyzoeu.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdqam1pdXdxb3Zob2Rqc3l6b2V1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzNTY4MTUsImV4cCI6MjEwODkzMjgxNX0.WqAo9tYz4kZ5SCky_X5DZQXcITO2tF3jUXxUpEbkbE4";
 
   const $ = s => document.querySelector(s);
   const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));

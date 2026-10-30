@@ -1,5 +1,6 @@
 -- ELITE : base de données pour messages, adhésions et témoignages
--- À coller dans Supabase > SQL Editor > Run (une seule fois).
+-- À coller dans Supabase > SQL Editor > Run.
+-- Ce script peut être relancé sans erreur.
 
 create table if not exists public.submissions (
   id         uuid primary key default gen_random_uuid(),
@@ -16,11 +17,13 @@ create table if not exists public.submissions (
 alter table public.submissions enable row level security;
 
 -- Le public peut ENVOYER (jamais lire, jamais s'auto-approuver)
+drop policy if exists "public can submit" on public.submissions;
 create policy "public can submit" on public.submissions
   for insert to anon
   with check (approved = false and is_read = false);
 
 -- L'administrateur connecté a tous les droits
+drop policy if exists "admin full access" on public.submissions;
 create policy "admin full access" on public.submissions
   for all to authenticated
   using (true) with check (true);
