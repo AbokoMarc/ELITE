@@ -13,3 +13,8 @@ Le site reste statique (Vercel/GitHub). Les messages sont stockés dans Supabase
 Utilisation : `https://votre-site/admin.html` -> connexion -> messages, adhésions, témoignages.
 Un témoignage n'apparaît sur le site qu'après avoir cliqué sur *Publier sur le site*.
 La clé anon est publique par conception : la sécurité repose sur les règles (RLS) du fichier SQL.
+
+## Statistiques de visite
+Relancez `supabase.sql` en entier (il peut être relancé sans risque). Puis dans `admin.html`, onglet **Statistiques de visite** :
+visites, appareils uniques, retours, courbe sur 14 jours, type d'appareil, navigateur, provenance.
+Pour ne pas compter vos propres visites : ouvrez une fois `votre-site/?notrack=1` sur chaque appareil que vous utilisez.

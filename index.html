@@ -121,6 +121,11 @@
     #toast { position:fixed; left:50%; bottom:max(20px,env(safe-area-inset-bottom)); transform:translate(-50%,16px); background:#102542; color:#F8F5F0; padding:.7rem 1.2rem; font-size:.85rem; opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease; z-index:90; max-width:calc(100% - 32px); text-align:center; }
     #toast.show { opacity:1; transform:translate(-50%,0); }
 
+    /* Affiche en grand */
+    #posterDlg { border:0; padding:0; background:transparent; max-width:94vw; max-height:96dvh; overflow:visible; }
+    #posterDlg::backdrop { background:rgba(16,37,66,.82); }
+    #posterDlg img { display:block; max-width:94vw; max-height:84dvh; width:auto; height:auto; }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior:auto; }
       *,*::before,*::after { transition:none !important; animation:none !important; }
@@ -196,6 +201,34 @@
       </div>
     </section>
 
+    <!-- ===================== LE CANDIDAT ===================== -->
+    <section id="candidat" class="sec bg-white">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8 grid gap-8 md:grid-cols-[minmax(0,300px)_1fr] md:gap-14 items-center">
+        <figure class="fx w-full max-w-[300px] justify-self-center md:justify-self-start">
+          <button type="button" id="posterBtn" class="block w-full p-0 bg-transparent border border-navy/15 cursor-zoom-in" aria-label="Agrandir l'affiche du candidat">
+            <img src="images/affiche-elite.jpg" width="864" height="1079" loading="lazy" decoding="async" class="block w-full h-auto" alt="Affiche de campagne : Je vote ELITE, unis pour agir, ensemble pour réussir. Foko Brice Loïc, candidat à la présidence du Bureau des Étudiants.">
+          </button>
+        </figure>
+        <div class="fx">
+          <p class="eyebrow">Notre candidat</p>
+          <h2 class="h2 mt-3">Foko Brice Loïc</h2>
+          <p class="mt-2 font-serif italic text-lg text-wine">Candidat à la présidence du Bureau des Étudiants</p>
+          <span class="rule-gold mt-5"></span>
+          <p class="mt-5 font-serif text-2xl sm:text-3xl leading-snug text-navy">Unis pour agir, ensemble pour réussir.</p>
+          <p class="mt-3 muted leading-relaxed max-w-xl">Bâtir un environnement universitaire plus dynamique, plus solidaire et plus ambitieux, où chaque étudiant dispose des moyens de réussir et des opportunités de se dépasser.</p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href="#programme" class="btn btn-solid">Découvrir le programme</a>
+            <button type="button" id="posterBtn2" class="btn btn-line">Voir l'affiche en grand</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="posterDlg" aria-label="Affiche de campagne">
+      <button type="button" id="posterClose" class="btn btn-solid mb-2 ml-auto flex" style="min-height:38px">Fermer</button>
+      <img src="images/affiche-elite.jpg" alt="Affiche de campagne ELITE, agrandie">
+    </dialog>
+
     <!-- ===================== VISION ===================== -->
     <section id="vision" class="sec bg-white">
       <div class="mx-auto max-w-7xl px-5 sm:px-8">
@@ -254,14 +287,14 @@
             <button type="button" class="ulink mt-4 self-start" data-axis="0">Explorer l'axe</button>
           </article>
           <article class="proj fx flex flex-col">
-            <div class="proj-img"><img loading="lazy" decoding="async" width="408" height="723" alt="Étudiant en costume portant la casquette ELITE" src="images/campagne-10.jpg" style="object-position:50% 18%"></div>
+            <div class="proj-img"><img loading="lazy" decoding="async" width="607" height="1080" alt="Étudiants au travail dans un espace carrières, ordinateur portable ouvert sur LinkedIn" src="images/career-hub.jpg" style="object-position:50% 38%"></div>
             <p class="eyebrow mt-5 !text-ink/55">Axe 3</p>
             <h3 class="mt-1 font-serif text-2xl font-bold text-navy">Career Hub</h3>
             <p class="mt-2 muted text-[0.95rem] leading-relaxed">Stages, emplois, bourses, formations et concours, avec des ressources pour CV, entretiens et portfolios.</p>
             <button type="button" class="ulink mt-4 self-start" data-axis="2">Explorer l'axe</button>
           </article>
           <article class="proj fx flex flex-col md:col-span-2 lg:col-span-1">
-            <div class="proj-img"><img loading="lazy" decoding="async" width="408" height="723" alt="Étudiant souriant portant la casquette ELITE" src="images/campagne-04.jpg" style="object-position:50% 25%"></div>
+            <div class="proj-img"><img loading="lazy" decoding="async" width="768" height="1365" alt="Étudiants portant la casquette ELITE en réunion autour d'une table" src="images/student-voice.jpg" style="object-position:50% 32%"></div>
             <p class="eyebrow mt-5 !text-ink/55">Axe 5</p>
             <h3 class="mt-1 font-serif text-2xl font-bold text-navy">Student Voice</h3>
             <p class="mt-2 muted text-[0.95rem] leading-relaxed">Consultation des étudiants, transmission de leurs préoccupations et suivi public des démarches.</p>
@@ -283,6 +316,8 @@
             <img loading="lazy" decoding="async" width="408" height="723" src="images/campagne-09.jpg" alt="Étudiant en maillot vert, main sur la casquette">
             <img loading="lazy" decoding="async" width="408" height="723" src="images/campagne-11.jpg" alt="Étudiant en pull à losanges">
             <img loading="lazy" decoding="async" width="408" height="723" src="images/campagne-12.jpg" alt="Étudiant en veste noire, main sur la casquette">
+            <img loading="lazy" decoding="async" width="408" height="723" src="images/campagne-04.jpg" alt="Étudiant souriant portant la casquette ELITE">
+            <img loading="lazy" decoding="async" width="408" height="723" src="images/campagne-10.jpg" alt="Étudiant en costume portant la casquette ELITE">
           </div>
         </div>
       </div>
@@ -406,6 +441,7 @@
       <div>
         <p class="font-serif italic text-lg text-ivory">Building Leaders, Shaping the Future.</p>
         <p class="mt-1 text-sm">Consortium Polytechnique Vogt High Tech · © <span id="year"></span> ELITE</p>
+        <p class="mt-1 text-xs text-ivory/55">Statistiques de visite anonymes : aucune donnée personnelle n'est collectée.</p>
       </div>
       <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm" aria-label="Pied de page">
         <a class="hover:text-white hover:underline decoration-gold underline-offset-4 decoration-2" href="#programme">Programme</a>
@@ -426,8 +462,8 @@
        Renseignez ces deux valeurs (Supabase > Project Settings > API) pour recevoir
        messages, adhésions et témoignages dans l'interface admin (admin.html).
        Tant qu'elles sont vides, le formulaire ouvre le client mail (repli). */
-    const SUPABASE_URL      = "";   // ex. "https://xxxxxxxx.supabase.co"
-    const SUPABASE_ANON_KEY = "";   // clé "anon / public" (sans danger côté navigateur)
+    const SUPABASE_URL      = "https://gjjmiuwqovhodjsyzoeu.supabase.co";   // ex. "https://xxxxxxxx.supabase.co"
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdqam1pdXdxb3Zob2Rqc3l6b2V1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzNTY4MTUsImV4cCI6MjEwODkzMjgxNX0.WqAo9tYz4kZ5SCky_X5DZQXcITO2tF3jUXxUpEbkbE4";   // clé "anon / public" (sans danger côté navigateur)
     const CONTACT_EMAIL     = "contact@elite-campus.example"; // repli mailto
     const BACKEND = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
@@ -603,6 +639,41 @@
         .then(r => r.ok ? r.json() : []).then(renderTestimonials).catch(() => {});
     }
 
+    /* ---------- Statistiques de visite (anonymes) ----------
+       Une ligne par session : identifiant aléatoire du navigateur, type d'appareil, système, navigateur.
+       Ni adresse IP, ni nom, ni e-mail. Pour ne pas compter vos propres visites, ouvrez une fois : votre-site/?notrack=1 */
+    (function trackVisit(){
+      if (!BACKEND) return;
+      try { if (/[?&]notrack=1/.test(location.search)) localStorage.setItem("elite_skip", "1"); if (localStorage.getItem("elite_skip")) return; } catch {}
+      const ua = navigator.userAgent;
+      if (navigator.webdriver || /bot|crawl|spider|headless|lighthouse|preview|facebookexternalhit/i.test(ua)) return;
+      try { if (sessionStorage.getItem("elite_v")) return; sessionStorage.setItem("elite_v", "1"); } catch { return; }
+
+      let id = "", isNew = false;
+      try {
+        id = localStorage.getItem("elite_id") || "";
+        if (!id) { id = (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(16) + Math.random().toString(16).slice(2)); localStorage.setItem("elite_id", id); isNew = true; }
+      } catch { id = "tmp-" + Date.now().toString(16) + Math.random().toString(16).slice(2); isNew = true; }
+
+      const touchMac = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;           // iPad en mode "ordinateur"
+      const device = /iPad|Tablet/i.test(ua) || touchMac || (/Android/i.test(ua) && !/Mobile/i.test(ua)) ? "tablet" : /Mobi|iPhone|Android/i.test(ua) ? "mobile" : "desktop";
+      const os = /Android/i.test(ua) ? "Android" : /iPhone|iPad|iPod/i.test(ua) || touchMac ? "iOS" : /Windows/i.test(ua) ? "Windows" : /Mac OS X|Macintosh/i.test(ua) ? "macOS" : /Linux|X11/i.test(ua) ? "Linux" : "Autre";
+      const browser = /Edg\//.test(ua) ? "Edge" : /OPR\/|Opera/.test(ua) ? "Opera" : /SamsungBrowser/.test(ua) ? "Samsung" : /Firefox\/|FxiOS/.test(ua) ? "Firefox" : /Chrome\/|CriOS/.test(ua) ? "Chrome" : /Safari\//.test(ua) ? "Safari" : "Autre";
+      let referrer = null;
+      try { if (document.referrer) { const h = new URL(document.referrer).hostname; if (h && h !== location.hostname) referrer = h.slice(0, 100); } } catch {}
+
+      fetch(`${SUPABASE_URL}/rest/v1/visits`, {method: "POST", keepalive: true, headers: {...headers(), "Content-Type": "application/json", "Prefer": "return=minimal"},
+        body: JSON.stringify({visitor_id: id, device, os, browser, referrer, is_new: isNew})}).catch(() => {});
+    })();
+
+    /* ---------- Affiche en grand ---------- */
+    const dlg = $("#posterDlg");
+    const openPoster = () => { if (dlg && dlg.showModal) dlg.showModal(); else window.open("images/affiche-elite.jpg", "_blank"); };
+    $("#posterBtn").addEventListener("click", openPoster);
+    $("#posterBtn2").addEventListener("click", openPoster);
+    $("#posterClose").addEventListener("click", () => dlg.close());
+    dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
     /* ---------- Menu mobile (panneau compact) ---------- */
     const burger = $("#burger"), menu = $("#mobileMenu");
     function setMenu(open){
@@ -624,7 +695,7 @@
       const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle("is-active", a.dataset.nav === en.target.id)); }), opts);
       ["vision","programme","projets","action","methode","engagements"].forEach(id => io.observe(document.getElementById(id)));
       const clear = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.remove("is-active")); }), opts);
-      ["accueil","temoignages","rejoindre"].forEach(id => clear.observe(document.getElementById(id)));
+      ["accueil","candidat","temoignages","rejoindre"].forEach(id => clear.observe(document.getElementById(id)));
     }
 
     /* ---------- Fade-in au scroll ---------- */
